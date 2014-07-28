@@ -19,6 +19,7 @@ void showBoard(int square); //Display the type of the square (Mine or no mine).
 //Execution begins here
 int main()
 {
+    srand(static_cast<unsigned int>(time(0))); //Seed random number.
     bool repeat;
     repeat = 1;
     while (repeat == 1)
@@ -141,7 +142,7 @@ int main()
             cout << "   ";
             for(i = 0 ; i < s; i++)
             {
-                cout << i << " ";
+                cout << i << " "; //Display column numbers.
             }
             cout << endl;
             for(i = 0; i < s ;i++) //Loop to display the board.
@@ -150,19 +151,19 @@ int main()
                 {
                     if(j == 0)
                     {
-                        cout << i << " |";
+                        cout << i << " |"; //Display row numbers.
                     }
                     if(show[i][j] == 1)
                     {
-                        showBoard(minefield[i][j]);
+                        showBoard(minefield[i][j]); //Show square.
                     }
                     else
                     {
-                        cout << "_|";
+                        cout << "_|"; // Unselected and unrevealed square.
                     }
                     if(j == (s-1))
                     {
-                        cout << endl;
+                        cout << endl; //Start new row.
                     }
                     if((minefield[i][j] != 9) && (show[i][j] == 1))
                     {
@@ -194,17 +195,17 @@ int main()
                 cout << "   ";
                 for(i = 0; i < s; i++)
                 {
-                    cout << i << " ";
+                    cout << i << " "; //Display column numbers.
                 }
                 cout << endl;
                 end = 1;
-                for(i = 0; i < s; i++)
+                for(i = 0; i < s; i++) //Loop to display the board.
                 {
                     for(j = 0; j < s; j++)
                     {
                         if(j == 0)
                         {
-                            cout << i << " |";
+                            cout << i << " |"; //Display row numbers.
                         }
                         if(minefield[i][j] == 9)
                         {
@@ -212,15 +213,15 @@ int main()
                         }
                         if(show[i][j] == 1)
                         {
-                            showBoard(minefield[i][j]);
+                            showBoard(minefield[i][j]); //Show positions of mines.
                         }
                         else
                         {
-                            cout << "_|";
+                            cout << "_|"; // Show empty square.
                         }
                         if(j == (s-1))
                         {
-                            cout << endl;
+                            cout << endl; // Start new row.
                         }
                     }
                 }
@@ -239,7 +240,7 @@ int main()
                             {
                                 if(minefield[i][j] != 9)
                                 {
-                                    show[i][j] = 1;
+                                    show[i][j] = 1; //Show blank patch.
                                 }
                             }
                         }
@@ -310,7 +311,6 @@ void showBoard(int square)
 int getRandom(int m, int n)
 {
     int random;
-    srand(static_cast<unsigned int>(time(0))); //Seed random number.
     random = rand();
     random = random / (random * m) + (1621 * m); //Relate random number to m.
     random = random % n; //Relate random number to n.
